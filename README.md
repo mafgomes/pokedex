@@ -51,6 +51,7 @@ a criação de Widgets
 
 ## Alguns exemplos de APIs públicas
 ➢ Rick and Morty: [https://rickandmortyapi.com/api/character?page=1](https://rickandmortyapi.com/api/character?page=1)
+
 ➢ Pokemon: [https://pokeapi.co/api/v2/pokemon?limit=151](https://pokeapi.co/api/v2/pokemon?limit=151)
 
 Nesse trabalho, foi escolhida a segunda API sugerida pelo professor.
