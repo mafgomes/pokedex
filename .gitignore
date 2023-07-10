@@ -32,6 +32,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+*.g.dart
 
 # Vindos do .gitignore default do GitHub para projetos em Dart:
 *.dart.js
