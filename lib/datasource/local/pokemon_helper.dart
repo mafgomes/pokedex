@@ -18,13 +18,16 @@ class PokemonHelper {
   }
 
   // Obtém todos os Pokémons de um dado tipo
-  Future<List<Pokemon>> getTodos(Tipo tipo) async {
+  Future<List<Pokemon>> getTodosPorTipo(Tipo tipo) async {
     await Future.delayed(const Duration(seconds: 1));
 
     Database db = await BancoDados().db;
 
     var listaDados = await db.query(Pokemon.tabela);
-    return listaDados.map((e) => Pokemon.fromMap(e, tipo)).toList();
+    if( listaDados.isNotEmpty ) {
+      return listaDados.map((e) => Pokemon.fromMap(e, tipo)).toList();
+    }
+    return [];
   }
 
   // Obtém o Pokémon associado ao ID fornecido
