@@ -1,7 +1,16 @@
+import 'package:dio/dio.dart';
 import 'package:pokedex/models/models.dart';
+import 'package:pokedex/models/poke_api_types.dart';
 
-class ReqDio {
-  Pokemon pokemon;
+class HttpGetter {
+  static const pokeAPI = 'https://pokeapi.co/api/v2/';
 
-  ReqDio(this.pokemon);
+  final tiposEP = '${pokeAPI}type';
+  final dio = Dio();
+
+  Future<List<Tipo>> getHttpTipos() async {
+    final response = await dio.get('${tiposEP}');
+    PokeApiTipo tipos = PokeApiTipo.fromJson(response.data);
+    return tipos.Tipos ?? [];
+  }
 }

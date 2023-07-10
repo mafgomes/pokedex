@@ -1,11 +1,12 @@
 import 'package:pokedex/datasource/local/banco_dados.dart';
+import 'package:pokedex/datasource/remote/req_dio.dart';
 import 'package:pokedex/models/models.dart';
 import 'package:sqflite/sqflite.dart';
 
 class TipoHelper {
   static const sqlCreate = """
     CREATE TABLE IF NOT EXISTS ${Tipo.tabela} (
-      ${Tipo.campoNome} INTEGER PRIMARY KEY AUTOINCREMENT,
+      ${Tipo.campoId} INTEGER PRIMARY KEY AUTOINCREMENT,
       ${Tipo.campoNome} TEXT
     )
   """;
@@ -22,6 +23,9 @@ class TipoHelper {
     Database db = await BancoDados().db;
 
     var listaDados = await db.query(Tipo.tabela);
+    if(listaDados.isEmpty) {
+      return await HttpGetter().getHttpTipos();
+    }
     return listaDados.map((e) => Tipo.fromMap(e)).toList();
   }
 

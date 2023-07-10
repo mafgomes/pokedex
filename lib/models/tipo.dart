@@ -4,14 +4,16 @@ part 'tipo.g.dart';
 
 @JsonSerializable()
 class Tipo {
-  static const tabela = 'tbCategoria';
-  static const campoId = 'campoId';
-  static const campoNome = 'campoNome';
+  static const tabela     = 'tbCategoria';
+  static const campoId    = 'campoId';
+  static const campoNome  = 'campoNome';
+  static const campoUrl   = 'campoUrl';
 
   int? id;
-  String nome;
+  String name;
+  String? url;
 
-  Tipo({this.id, required this.nome});
+  Tipo({this.id, required this.name, this.url});
 
   factory Tipo.fromJson(Map<String, dynamic> json) =>
       _$TipoFromJson(json);
@@ -20,13 +22,15 @@ class Tipo {
   factory Tipo.fromMap(Map dados) {
     return Tipo(
         id: dados[campoId].toString().toInt(),
-        nome: dados[campoNome]
+        name: dados[campoNome],
+        url: dados[campoUrl]
     );
   }
   Map<String, dynamic> toMap() {
     return {
       campoId: id,
-      campoNome: nome
+      campoNome: name,
+      campoUrl: url
     };
   }
 }
