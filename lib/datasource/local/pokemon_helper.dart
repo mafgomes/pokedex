@@ -43,7 +43,7 @@ class PokemonHelper {
       // Tenta buscar o tipo associado a esse Pokémon
       int tp = 0;
       listaPokemons.first.forEach((k, v) {
-        if( k == '${Pokemon.campoTipo}' ) {
+        if( k == Pokemon.campoTipo ) {
           tp = v as int;
         }
       });
