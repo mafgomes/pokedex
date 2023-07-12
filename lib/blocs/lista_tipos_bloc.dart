@@ -1,5 +1,5 @@
-import 'package:pokedex/datasource/local/tipo_helper.dart';
 import 'package:pokedex/models/models.dart';
+import 'package:pokedex/datasource/local/tipo_helper.dart';
 import 'package:pokedex/datasource/remote/req_dio.dart';
 
 class ListaTiposBloc {

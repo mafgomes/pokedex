@@ -11,10 +11,10 @@ class Pokemon {
   static const campoTipo = 'campoTipo';
 
   final int? id;
-  final String nome;
+  final String name;
   final Tipo tipo;
 
-  Pokemon({this.id, required this.nome, required this.tipo});
+  Pokemon({this.id, required this.name, required this.tipo});
 
   factory Pokemon.fromJson(Map<String, dynamic> json) =>
       _$PokemonFromJson(json);
@@ -23,14 +23,14 @@ class Pokemon {
   factory Pokemon.fromMap(Map dados, Tipo tipo) {
     return Pokemon(
         id: dados[campoId].toString().toInt(),
-        nome: dados[campoNome],
+        name: dados[campoNome],
         tipo: tipo
     );
   }
   Map<String, dynamic> toMap() {
     return {
       campoId: id,
-      campoNome: nome,
+      campoNome: name,
       campoTipo: tipo.id
     };
   }
