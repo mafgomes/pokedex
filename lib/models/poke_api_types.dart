@@ -1,19 +1,20 @@
 import 'package:pokedex/models/models.dart';
-import 'package:json_annotation/json_annotation.dart';
-part 'poke_api_types.g.dart';
 
-@JsonSerializable()
 class PokeApiTipo {
 	var numTipos = 0;
-	List<Tipo>? Tipos;
+	List<Tipo> tipos;
 
-	PokeApiTipo({required this.numTipos, this.Tipos}) {
-		print('PokeAPITypes: Número de tipos recebido: ${this.numTipos}\n');
-		print('Pior ainda: Número de tipos recebido: ${this.numTipos}\n');
-		print("Número de objetos: ${numTipos}\n');
-		print('Tipos sendo retornados: ${Tipos}');
+	PokeApiTipo({required this.tipos}) {
+		numTipos = tipos.length;
 	}
 
-	factory PokeApiTipo.fromJson(Map<String, dynamic> json) =>
-			_$PokeApiTipoFromJson(json);
+	factory PokeApiTipo.fromJson(List<dynamic> jsonData) {
+		var tipos = <Tipo>[];
+		var id = 0;
+		jsonData.forEach((e) {
+			id = id + 1;
+			tipos.add(Tipo(id: id, name: e["name"], url: e["url"]));
+		});
+		return PokeApiTipo(tipos: tipos);
+	}
 }

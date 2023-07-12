@@ -14,16 +14,11 @@ class HttpGetter {
   Future<List<Tipo>> getHttpTipos() async {
     final response = await dio.get(tiposEP);
     try {
-      if (true || response.statusCode!.isFinite &&
-          response.statusCode! >= 200 &&
+      if (response.statusCode! >= 200 &&
           response.statusCode! <= 299
       ) {
-        print("Json retornado!\n");
-        PokeApiTipo tipos = PokeApiTipo.fromJson(response.data);
-        print("Tipos:\n");
-        print("${tipos}");
-        // print(tipos.Tipos);
-        return tipos.Tipos ?? [];
+        PokeApiTipo tipos = PokeApiTipo.fromJson(response.data["results"]);
+        return tipos.tipos;
       } else {
         throw Exception('Erro: "${response.statusMessage}" (${response.statusCode}');
       }
